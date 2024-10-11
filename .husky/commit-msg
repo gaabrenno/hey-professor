@@ -1,19 +1,25 @@
+#!/bin/sh
 NC='\033[0m'
 BBlue='\033[1;34m'
 BRed='\033[1;31m'
 
-REGEX_ISSUE_ID="a-zA-Z0-9,\.\_\-]+-[0-9]+"
+# Regex para o ID da issue, exemplo: ABC-123
+REGEX_ISSUE_ID="[a-zA-Z0-9._-]+-[0-9]+"
 BRANCH_NAME=$(git symbolic-ref --short HEAD)
-ISSUE_ID=$(echo $BRANCH_NAME | grep -oE $REGEX_ISSUE_ID)
-COMMIT_MESSAGE=&(cat "$1")
+ISSUE_ID=$(echo "$BRANCH_NAME" | grep -oE "$REGEX_ISSUE_ID")
+COMMIT_MESSAGE=$(cat "$1")
 
+# Verifica se o ID da issue está presente no nome da branch
 if [ -z "$ISSUE_ID" ]; then
-	echo -e "${BRed}Error: No issue id found in branch name. Please name your branch with issue id.${NC}"
-	exit 1
+    echo -e "${BRed}Error: No issue ID found in branch name. Please name your branch with an issue ID.${NC}"
+    exit 1
 fi
 
-if[[ $COMMIT_MESSAGE != *$ISSUE_ID* ]]; then
-	echo 0 
+# Verifica se o ID da issue está presente na mensagem de commit
+if [[ "$COMMIT_MESSAGE" != *"$ISSUE_ID"* ]]; then
+    echo -e "${BRed}Error: Commit message does not contain the issue ID: $ISSUE_ID.${NC}"
+    exit 1
 fi
 
-echo "$ISSUE_ID: $COMMIT_MESSAGE" > $1
+# Atualiza a mensagem de commit para incluir o ID da issue no início
+echo "$ISSUE_ID: $COMMIT_MESSAGE" > "$1"
