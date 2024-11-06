@@ -11,7 +11,15 @@ class QuestionController extends Controller
     {
 
         $atributes = request()->validate([
-            'question' => ['required', 'min:10'],
+            'question' => [
+                'required',
+                'min:10',
+                function (string $atribute, mixed $value, callable $fail) {
+                    if ($value[strlen($value) - 1] !== '?') {
+                        $fail('Are you sure it is a question? It should end with a question mark in the end.');
+                    }
+                },
+            ],
         ]);
 
         Question::query()->create($atributes);
