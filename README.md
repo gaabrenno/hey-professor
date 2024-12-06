@@ -1,10 +1,7 @@
-[![CI  Develop](https://github.com/gaabrenno/hey-professor/actions/workflows/laravel.yml/badge.svg?branch=develop)](https://github.com/gaabrenno/hey-professor/actions/workflows/laravel.yml)
-[![CI  Main](https://github.com/gaabrenno/hey-professor/actions/workflows/laravel.yml/badge.svg?branch=develop)](https://github.com/gaabrenno/hey-professor/actions/workflows/laravel.yml)
-
-
-
 
 <div align="center">
+    [![CI  Develop](https://github.com/gaabrenno/hey-professor/actions/workflows/laravel.yml/badge.svg?branch=develop)](https://github.com/gaabrenno/hey-professor/actions/workflows/laravel.yml)
+    [![CI  Main](https://github.com/gaabrenno/hey-professor/actions/workflows/laravel.yml/badge.svg?branch=develop)](https://github.com/gaabrenno/hey-professor/actions/workflows/laravel.yml)
     <img src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" />
     <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" />
 </div>
