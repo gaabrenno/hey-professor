@@ -36,23 +36,23 @@ php artisan key:generate
 ```
 composer dump-autoload
 ```
-6. Run the project npm:
+7. Install all node dependencies:
 ```
 npm install
 ```
-7. Run all migrations:
+8. Run all migrations:
 ```
 php artisan migrate
 ```
-8. Run all database seed:
+9. Run all database seed:
 ```
 php artisan db:seed
 ```
-9. Create a link for public files
+10. Create a link for public files
 ```
 php artisan storage:link
 ```
-10. Done! Run `php artisan serve` to start.
+11. Done! Run `php artisan serve` to start.
 
 ## Background Services
 
