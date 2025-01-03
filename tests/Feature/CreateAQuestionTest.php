@@ -10,7 +10,7 @@ it('should be able to create a new question bigger than 255 chacters', function 
     actingAs($user);
 
     //Act::agir
-    $request = post(route('questions.store'), [
+    $request = post(route('question.store'), [
         'question' => str_repeat('#', 256) . '?',
     ]);
 
@@ -29,7 +29,7 @@ it('shold check if ends with question mark?', function () {
     actingAs($user);
 
     //Act::agir
-    $request = post(route('questions.store'), [
+    $request = post(route('question.store'), [
         'question' => str_repeat('#', 10),
     ]);
 
@@ -46,7 +46,7 @@ it('should have at least 10 characters', function () {
     actingAs($user);
 
     //Act::agir
-    $request = post(route('questions.store'), [
+    $request = post(route('question.store'), [
         'question' => str_repeat('#', 8) . '?',
     ]);
 
