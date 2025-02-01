@@ -6,11 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\{Question};
 use Illuminate\Http\RedirectResponse;
 
-class LikeController extends Controller
+class UnLikeController extends Controller
 {
     public function __invoke(Question $questionId): RedirectResponse
     {
-        user()->like($questionId);
+        user()->unlike($questionId);
 
         return back();
     }
