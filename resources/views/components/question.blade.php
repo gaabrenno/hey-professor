@@ -5,16 +5,17 @@
         <p class="text-sm text-gray-500">{{ $question->created_at->diffForHumans() }}</p>
     </span>
     <div class="flex space-x-2">
+        <pre>@dump($question->toArray())</pre>
         <x-form action="{{route('question.like', $question)}}" id="form-like-{{$question->id}}">
             <button type="submit" form="form-like-{{$question->id}}">
                 <x-icon.thumbs-up class="w-5 h-h text-blue-600 hover:text-green-400 cursor-pointer" id="thumb-up"/>
-                <span>{{$question->likes ?? 0}}</span>
+                <span>{{$question->votes_sum_like ?? 0}}</span>
             </button>
         </x-form>
         <x-form action="{{route('question.unlike', $question)}}" id="form-unlike-{{$question->id}}">
             <button type="submit" form="form-unlike-{{$question->id}}">
                 <x-icon.thumbs-down class="w-5 h-h text-blue-600 hover:text-red-400 cursor-pointer" id="thumb-down"/>
-                <span>{{$question->unlikes ?? 0}}</span>
+                <span>{{$question->votes_sum_unlike ?? 0}}</span>
             </button>
         </x-form>
     </div>
