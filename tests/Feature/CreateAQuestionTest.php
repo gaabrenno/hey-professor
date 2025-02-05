@@ -22,25 +22,24 @@ it('should be able to create a new question bigger than 255 chacters', function 
     ]);
 });
 
-// it('shold create as a draft all the time', function () {
+it('shold create as a draft all the time', function () {
 
-//     //Arrange::preparar
-//     $user = User::factory()->create();
-//     actingAs($user);
+    //Arrange::preparar
+    $user = User::factory()->create();
+    actingAs($user);
 
-//     //Act::agir
-//     $request = post(route('question.store'), [
-//         'question' => str_repeat('#', 256) . '?',
-//     ]);
+    //Act::agir
+    $request = post(route('question.store'), [
+        'question' => str_repeat('#', 256) . '?',
+    ]);
 
-//     //Assert::verificar
+    //Assert::verificar
+    assertDatabaseHas('questions', [
+        'question' => str_repeat('#', 256) . '?',
+        'draft'    => true,
+    ]);
 
-//     assertDatabaseHas('questions', [
-//         'question' => str_repeat('#', 256) . '?',
-//         'draft'    => true,
-//     ]);
-
-// });
+});
 
 it('shold check if ends with question mark?', function () {
 
