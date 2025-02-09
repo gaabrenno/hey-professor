@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Question;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\{RedirectResponse};
+use Illuminate\Http\{RedirectResponse, Response};
 
 class QuestionController extends Controller
 {
@@ -34,6 +35,15 @@ class QuestionController extends Controller
                 'question' => $atributes['question'],
                 'draft'    => true,
             ]);
+
+        return back();
+    }
+
+    public function destroy(Question $question): RedirectResponse
+    {
+        abort_unless(user()->can('destroy', $question), Response::HTTP_FORBIDDEN);
+
+        $question->delete();
 
         return back();
     }
