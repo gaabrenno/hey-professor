@@ -17,7 +17,7 @@ This project requires [PHP 8.3](https://www.php.net/releases/8.3/en.php) and [La
 
 1. Cloning the project:
 ```
-git clone https://github.com/4selet/4selet-v2.git && cd ./4selet-v2
+git clone https://github.com/gaabrenno/hey-professor.git; cd ./4selet-v2
 ```
 2. Create the environment file `.env` in the root of the project.
 ```
