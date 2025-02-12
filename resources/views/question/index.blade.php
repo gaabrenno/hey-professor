@@ -60,8 +60,11 @@
                             {{ $question->question }}
                         </x-table.td>
                         <x-table.td>
-                            //btn deletar
-                            //btn publicar
+                            <x-form delete :action="route('question.destroy', $question)" >
+                                <button type="submit" class="hover:underline text-red-500"> 
+                                    Delete
+                                </button>
+                            </x-form>
                         </x-table.td>
                     </x-table.tr>
                 @endforeach
