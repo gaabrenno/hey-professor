@@ -20,6 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('/question')->group(function () {
         Route::get('/', [QuestionController::class, 'index'])->name('question.index');
         Route::post('/store', [QuestionController::class, 'store'])->name('question.store');
+        Route::get('/{question}/edit', [QuestionController::class, 'edit'])->name('question.edit');
         Route::delete('/{question}', [QuestionController::class, 'destroy'])->name('question.destroy');
 
         Route::post('/like/{questionId}', Question\LikeController::class)->name('question.like');
