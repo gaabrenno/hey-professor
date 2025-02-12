@@ -49,6 +49,18 @@ class QuestionController extends Controller
     public function update(Question $question): RedirectResponse
     {
         abort_unless(user()->can('update', $question), Response::HTTP_FORBIDDEN);
+
+        request()->validate([
+            'question' => [
+                'required',
+                'min:10',
+                function (string $atribute, mixed $value, callable $fail) {
+                    if ($value[strlen($value) - 1] !== '?') {
+                        $fail('Are you sure it is a question? It should end with a question mark in the end.');
+                    }
+                },
+            ],
+        ]);
         $question->question = request()->question;
         $question->save();
 
