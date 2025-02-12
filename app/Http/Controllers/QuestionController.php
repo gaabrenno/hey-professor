@@ -46,6 +46,15 @@ class QuestionController extends Controller
         return view('question.edit', compact('question'));
     }
 
+    public function update(Question $question): RedirectResponse
+    {
+        abort_unless(user()->can('update', $question), Response::HTTP_FORBIDDEN);
+        $question->question = request()->question;
+        $question->save();
+
+        return back();
+    }
+
     public function destroy(Question $question): RedirectResponse
     {
         abort_unless(user()->can('destroy', $question), Response::HTTP_FORBIDDEN);

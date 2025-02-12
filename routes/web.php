@@ -21,6 +21,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [QuestionController::class, 'index'])->name('question.index');
         Route::post('/store', [QuestionController::class, 'store'])->name('question.store');
         Route::get('/{question}/edit', [QuestionController::class, 'edit'])->name('question.edit');
+        Route::put('/{question}', [QuestionController::class, 'update'])->name('question.update');
         Route::delete('/{question}', [QuestionController::class, 'destroy'])->name('question.destroy');
 
         Route::post('/like/{questionId}', Question\LikeController::class)->name('question.like');
