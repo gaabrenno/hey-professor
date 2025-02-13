@@ -51,7 +51,7 @@ it('should update the question in the database', function () {
     $question = Question::factory()->for($user, 'createdBy')->create(['draft' => true]);
     actingAs($user);
 
-    put(route('question.update', $question), ['question' => 'Updated Question?'])->assertRedirect();
+    put(route('question.update', $question), ['question' => 'Updated Question?'])->assertRedirect(route('question.index'));
 
     $question->refresh();
     expect($question)->question->toBe('Updated Question?');
