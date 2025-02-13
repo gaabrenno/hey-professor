@@ -62,7 +62,7 @@
                         <x-table.td>
                             {{ $question->question }}
                         </x-table.td>
-                        <x-table.td>
+                          <x-table.td>
                             <x-form delete :action="route('question.destroy', $question)" >
                                 <button type="submit" class="hover:underline hover:text-red-400 text-blue-500"> 
                                     Delete
