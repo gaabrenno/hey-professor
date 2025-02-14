@@ -33,3 +33,26 @@ it('should paginate the resoult', function () {
         });
 
 });
+
+it('shold order by like and unlike, most liked question shold be at th top, most unliked questions shold be in th bottom', function () {
+
+    $user = User::factory()->create();
+
+    $questions      = Question::factory()->count(5)->create();
+    $likeQuestion   = Question::find(3);
+    $unlikeQuestion = Question::find(1);
+    $user->like($likeQuestion);
+    $unlikeUser = User::factory()->create();
+    $unlikeUser->unlike($unlikeQuestion);
+
+    actingAs($user);
+    get(route('dashboard'))
+        ->assertViewHas('questions', function ($questions) {
+            expect($questions)
+                ->first()->id->toBe(3)
+                ->and($questions)
+                ->last()->id->toBe(1);
+
+            return true;
+        });
+});
