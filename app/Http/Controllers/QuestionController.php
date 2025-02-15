@@ -67,11 +67,20 @@ class QuestionController extends Controller
         return to_route('question.index');
     }
 
+    public function archive(Question $question): RedirectResponse
+    {
+        abort_unless(user()->can('archive', $question), Response::HTTP_FORBIDDEN);
+
+        $question->delete();
+
+        return back();
+    }
+
     public function destroy(Question $question): RedirectResponse
     {
         abort_unless(user()->can('destroy', $question), Response::HTTP_FORBIDDEN);
 
-        $question->delete();
+        $question->forceDelete();
 
         return back();
     }

@@ -21,4 +21,9 @@ class QuestionPolicy
         return $question->createdBy->is($user);
     }
 
+    public function archive(User $user, Question $question): bool
+    {
+        return $question->draft && $question->createdBy->is($user);
+    }
+
 }
