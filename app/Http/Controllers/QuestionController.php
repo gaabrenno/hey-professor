@@ -76,6 +76,17 @@ class QuestionController extends Controller
         return back();
     }
 
+    public function restore(int $id): RedirectResponse
+    {
+        // abort_unless(user()->can('restore', $question), Response::HTTP_FORBIDDEN);
+
+        $question = Question::withTrashed()->find($id);
+
+        $question->restore();
+
+        return back();
+    }
+
     public function destroy(Question $question): RedirectResponse
     {
         abort_unless(user()->can('destroy', $question), Response::HTTP_FORBIDDEN);
