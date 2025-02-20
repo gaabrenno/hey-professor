@@ -11,7 +11,8 @@ class QuestionController extends Controller
     public function index(): View
     {
         return view('question.index', [
-            'questions' => user()->questions,
+            'questions'         => user()->questions,
+            'archivedQuestions' => user()->questions()->onlyTrashed()->get(),
         ]);
     }
 
@@ -67,11 +68,31 @@ class QuestionController extends Controller
         return to_route('question.index');
     }
 
+    public function archive(Question $question): RedirectResponse
+    {
+        abort_unless(user()->can('archive', $question), Response::HTTP_FORBIDDEN);
+
+        $question->delete();
+
+        return back();
+    }
+
+    public function restore(int $id): RedirectResponse
+    {
+        // abort_unless(user()->can('restore', $question), Response::HTTP_FORBIDDEN);
+
+        $question = Question::withTrashed()->find($id);
+
+        $question->restore();
+
+        return back();
+    }
+
     public function destroy(Question $question): RedirectResponse
     {
         abort_unless(user()->can('destroy', $question), Response::HTTP_FORBIDDEN);
 
-        $question->delete();
+        $question->forceDelete();
 
         return back();
     }

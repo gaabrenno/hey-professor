@@ -12,7 +12,11 @@
             <x-btn.reset type="reset"> Reset </x-btn.reset>
         </x-form>      
         <hr class="border-gray-700 border-dashed my-4">
+        @if($questions->isEmpty() && $archivedQuestions->isEmpty())
+            <div class="dark:text-gray-500 uppercase font-bold mb-1">No Questions</div>
+        @endif
         
+        @if($questions->where('draft', true)->isNotEmpty())
         <div class="dark:text-gray-500 uppercase font-bold mb-1">My Draft</div>
         <x-table>
             <x-table.thead>
@@ -28,7 +32,7 @@
                             {{ $question->question }}
                         </x-table.td>
                         <x-table.td>
-                            <x-form delete :action="route('question.destroy', $question)" >
+                            <x-form delete onsubmit="return confirm('Are you sure?')" :action="route('question.destroy', $question)" >
                                 <button type="submit" class="hover:underline hover:text-red-400 text-blue-500"> 
                                     Delete
                                 </button>
@@ -44,10 +48,12 @@
                         </x-table.td>
                     </x-table.tr>
                 @endforeach
+            </tbody>
         </x-table>
-
         <hr class="border-gray-700 border-dashed my-4">
+        @endif
         
+        @if ($questions->where('draft', false)->isNotEmpty())
         <div class="dark:text-gray-500 uppercase font-bold mb-1">My Questions</div>
         <x-table>
             <x-table.thead>
@@ -62,8 +68,47 @@
                         <x-table.td>
                             {{ $question->question }}
                         </x-table.td>
-                          <x-table.td>
-                            <x-form delete :action="route('question.destroy', $question)" >
+                        <x-table.td>
+                            <x-form delete onsubmit="return confirm('Are you sure?')" :action="route('question.destroy', $question)" >
+                                <button type="submit" class="hover:underline hover:text-red-400 text-blue-500"> 
+                                    Delete
+                                </button>
+                            </x-form>
+                            <x-form patch :action="route('question.archive', $question)" >
+                                <button type="submit" class="hover:underline hover:text-yellow-400 text-blue-500"> 
+                                    Archive
+                                </button>
+                            </x-form>
+                        </x-table.td>
+                    </x-table.tr>
+                @endforeach
+            </tbody>
+        </x-table>
+        <hr class="border-gray-700 border-dashed my-4">
+        @endif
+
+        @if ($archivedQuestions->isNotEmpty())
+        <div class="dark:text-gray-500 uppercase font-bold mb-1">Archive Questions</div>
+        <x-table>
+            <x-table.thead>
+                <tr>
+                    <x-table.th>Question</x-table.th>
+                    <x-table.th>Actions</x-table.th>
+                </tr>
+            </x-table.thead>
+            <tbody>
+                @foreach ($archivedQuestions as $question)
+                    <x-table.tr>
+                        <x-table.td>
+                            {{ $question->question }}
+                        </x-table.td>
+                        <x-table.td>
+                            <x-form patch :action="route('question.restore', $question)" >
+                                <button type="submit" class="hover:underline hover:text-green-400 text-blue-500"> 
+                                    Restore
+                                </button>
+                            </x-form>
+                            <x-form delete onsubmit="return confirm('Are you sure?')" :action="route('question.destroy', $question)" >
                                 <button type="submit" class="hover:underline hover:text-red-400 text-blue-500"> 
                                     Delete
                                 </button>
@@ -71,12 +116,8 @@
                         </x-table.td>
                     </x-table.tr>
                 @endforeach
+            </tbody>
         </x-table>
-
-        <!-- <div class="dark:text-gray-400"></div>
-            @foreach ($questions as $question)
-                <x-question :question="$question"  />
-            @endforeach
-        </div> -->
+        @endif
     </x-container>
 </x-app-layout>

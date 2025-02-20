@@ -17,6 +17,7 @@ return new class () extends Migration {
             $table->unsignedSmallInteger('like')->default(0);
             $table->unsignedSmallInteger('unlike')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
