@@ -12,7 +12,11 @@
             <x-btn.reset type="reset"> Reset </x-btn.reset>
         </x-form>      
         <hr class="border-gray-700 border-dashed my-4">
+        @if($questions->isEmpty() && $archivedQuestions->isEmpty())
+            <div class="dark:text-gray-500 uppercase font-bold mb-1">No Questions</div>
+        @endif
         
+        @if($questions->where('draft', true)->isNotEmpty())
         <div class="dark:text-gray-500 uppercase font-bold mb-1">My Draft</div>
         <x-table>
             <x-table.thead>
@@ -46,9 +50,10 @@
                 @endforeach
             </tbody>
         </x-table>
-
         <hr class="border-gray-700 border-dashed my-4">
+        @endif
         
+        @if ($questions->where('draft', false)->isNotEmpty())
         <div class="dark:text-gray-500 uppercase font-bold mb-1">My Questions</div>
         <x-table>
             <x-table.thead>
@@ -79,9 +84,10 @@
                 @endforeach
             </tbody>
         </x-table>
-
         <hr class="border-gray-700 border-dashed my-4">
+        @endif
 
+        @if ($archivedQuestions->isNotEmpty())
         <div class="dark:text-gray-500 uppercase font-bold mb-1">Archive Questions</div>
         <x-table>
             <x-table.thead>
@@ -112,5 +118,6 @@
                 @endforeach
             </tbody>
         </x-table>
+        @endif
     </x-container>
 </x-app-layout>
