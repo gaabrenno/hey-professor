@@ -28,7 +28,7 @@
             <tbody>
                 @foreach ($questions->where('draft', true) as $question)
                     <x-table.tr>
-                        <x-table.td>
+                        <x-table.td style="max-width: 500px; width: 100%;">
                             {{ $question->question }}
                         </x-table.td>
                         <x-table.td>
@@ -65,7 +65,7 @@
             <tbody>
                 @foreach ($questions->where('draft', false) as $question)
                     <x-table.tr>
-                        <x-table.td>
+                        <x-table.td style="max-width: 500px; width: 100%;">
                             {{ $question->question }}
                         </x-table.td>
                         <x-table.td>
@@ -99,7 +99,7 @@
             <tbody>
                 @foreach ($archivedQuestions as $question)
                     <x-table.tr>
-                        <x-table.td>
+                        <x-table.td style="max-width: 500px; width: 100%;">
                             {{ $question->question }}
                         </x-table.td>
                         <x-table.td>
