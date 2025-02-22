@@ -13,7 +13,10 @@
         </x-form>      
         <hr class="border-gray-700 border-dashed my-4">
         @if($questions->isEmpty() && $archivedQuestions->isEmpty())
-            <div class="dark:text-gray-500 uppercase font-bold mb-1">No Questions</div>
+        <div class="flex flex-col items-center justify-center h-full mt-10">
+            <x-icon.not-found width="300"/>
+            <p class="text-center dark:text-gray-500 uppercase font-bold mb-1 mt-5">We don't have anything here yet!</p>
+        </div>
         @endif
         
         @if($questions->where('draft', true)->isNotEmpty())

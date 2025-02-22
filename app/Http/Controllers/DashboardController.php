@@ -15,6 +15,9 @@ class DashboardController extends Controller
                 'questions' => Question::select('questions.*')
                     ->leftJoin('votes', 'votes.question_id', 'questions.id')
                     ->selectRaw('COALESCE(SUM(votes.like), 0) AS votes_sum_like, COALESCE(SUM(votes.unlike), 0) AS votes_sum_unlike')
+                    ->when(request()->has('search'), function ($query) {
+                        $query->where('questions.question', 'like', '%' . request()->search . '%');
+                    })
                     ->groupBy('questions.id')
                     ->orderByDesc('votes_sum_like')
                     ->orderBy('votes_sum_unlike')
