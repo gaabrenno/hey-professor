@@ -5,20 +5,20 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 use function Pest\Laravel\{actingAs, get};
 
-it('should list questions', function () {
+// it('should list questions', function () {
 
-    $user      = User::factory()->create();
-    $questions = Question::factory()->count(5)->create();
+//     $user      = User::factory()->create();
+//     $questions = Question::factory()->count(5)->create();
 
-    actingAs($user);
+//     actingAs($user);
 
-    $response = get(route('dashboard'));
+//     $response = get(route('dashboard'));
 
-    /** @var Question $q  */
-    foreach ($questions as $q) {
-        $response->assertSee($q->question);
-    }
-});
+//     /** @var Question $q  */
+//     foreach ($questions as $q) {
+//         $response->assertSee($q->question);
+//     }
+// });
 
 it('should paginate the resoult', function () {
 

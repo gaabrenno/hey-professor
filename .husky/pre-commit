@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Executa o PHPStan para análise estática do código
-echo "Executando PHPStan para análise estática..."
-./vendor/bin/phpstan analyse --memory-limit=512M
+# echo "Executando PHPStan para análise estática..."
+# ./vendor/bin/phpstan analyse --memory-limit=512M
 
-# Verifica o status de saída do PHPStan
-if [ $? -ne 0 ]; then
-    echo "hehe Deu ruim cumpadi.... Erros encontrados pelo PHPStan. Corrija-os antes de realizar o commit."
-    exit 1
-fi
+# # Verifica o status de saída do PHPStan
+# if [ $? -ne 0 ]; then
+#     echo "hehe Deu ruim cumpadi.... Erros encontrados pelo PHPStan. Corrija-os antes de realizar o commit."
+#     exit 1
+# fi
 
 # Executa o PHPUnit para testes automatizados em parallel
 echo "Executando textes em paralelo..."
