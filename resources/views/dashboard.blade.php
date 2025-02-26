@@ -16,7 +16,7 @@
 
         @if($questions->isEmpty())
         <div class="flex flex-col items-center justify-center h-full mt-10">
-            <x-icon.search-null width="500"/>
+            <x-icon.search-null class="w-1/2 md:w-1/3 lg:w-1/4"/>
             <p class="text-center text-2xl mt-5">Question not found!</p>
         </div>
         @endif

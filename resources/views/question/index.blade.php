@@ -14,7 +14,7 @@
         <hr class="border-gray-700 border-dashed my-4">
         @if($questions->isEmpty() && $archivedQuestions->isEmpty())
         <div class="flex flex-col items-center justify-center h-full mt-10">
-            <x-icon.not-found width="300"/>
+            <x-icon.not-found class="w-1/2 md:w-1/3 lg:w-1/4"/>
             <p class="text-center dark:text-gray-500 uppercase font-bold mb-1 mt-5">We don't have anything here yet!</p>
         </div>
         @endif
