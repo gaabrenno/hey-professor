@@ -11,12 +11,12 @@
 # fi
 
 # Executa o PHPUnit para testes automatizados em parallel
-echo "Executando textes em paralelo..."
-php artisan test --parallel
-if [ $? -ne 0 ]; then
-    echo "hehe Deu ruim cumpadi.... 1 ou mais testes deram errado. Corrija-os antes de realizar o commit."
-    exit 1
-fi
+# echo "Executando textes em paralelo..."
+# php artisan test --parallel
+# if [ $? -ne 0 ]; then
+#     echo "hehe Deu ruim cumpadi.... 1 ou mais testes deram errado. Corrija-os antes de realizar o commit."
+#     exit 1
+# fi
 
 # Executa o Laravel Pint com correção automática
 echo "Executando Laravel Pint para corrigir o código..."

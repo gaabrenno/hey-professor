@@ -5,19 +5,18 @@ use App\Http\Controllers\{DashboardController, ProfileController, Question, Ques
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    if (app()->isLocal()) {
-        // auth()->loginUsingId(1);
-
-        // return to_route('dashboard');
+    if (auth()->check()) {
+        return redirect()->route('dashboard');
     }
 
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Route::get('/github/login', RedirectController::class)->name('github.login');
 Route::get('/github/callback', CallbackController::class)->name('github.callback');
 
 Route::middleware(['auth', 'verified'])->group(function () {
+
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
     #region Question Routes
     Route::prefix('/question')->group(function () {
