@@ -13,6 +13,7 @@ class DashboardController extends Controller
             'dashboard',
             [
                 'questions' => Question::select('questions.*')
+                    ->where('draft', false)
                     ->leftJoin('votes', 'votes.question_id', 'questions.id')
                     ->selectRaw('COALESCE(SUM(votes.like), 0) AS votes_sum_like, COALESCE(SUM(votes.unlike), 0) AS votes_sum_unlike')
                     ->when(request()->has('search'), function ($query) {
