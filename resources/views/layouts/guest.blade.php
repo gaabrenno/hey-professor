@@ -11,8 +11,8 @@
     </head>
     <body class="bg-gray-900 text-gray-100 scroll-smooth">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0  dark:bg-gray-900">
-            <h1 class="text-5xl font-extrabold bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
-                RAG Fast Systen
+            <h1 class="text-5xl font-extrabold bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text mb-6">
+                <a href="" >RAG Fast Systen</a>
             </h1>
             <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-gradient-to-r from-gray-800 to-gray-700 dark:from-gray-600 dark:to-gray-800 shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
