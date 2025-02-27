@@ -11,8 +11,7 @@
     <nav class="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 shadow-md py-4 z-50">
         <div class="max-w-6xl mx-auto flex justify-between items-center px-6">
             <a href="#" class="text-2xl font-bold text-blue-400 hover:text-blue-300 transition">RAG System</a>
-            <!-- <a href="{{ route('dashboard') }}" class="px-6 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition"> -->
-            <a href="" class="px-6 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition">
+            <a href="{{ route('dashboard') }}" class="px-6 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition">
                 Começar Agora
             </a>
         </div>
@@ -64,8 +63,7 @@
         <p class="mt-3 text-gray-400 max-w-xl">
             Experimente agora e crie seu sistema RAG em poucos passos.
         </p>
-        <!-- <a href="{{ route('dashboard') }}" class="mt-6 inline-block px-8 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition transform hover:scale-110"> -->
-        <a href="" class="mt-6 inline-block px-8 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition transform hover:scale-110">
+        <a href="{{ route('dashboard') }}" class="mt-6 inline-block px-8 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition transform hover:scale-110">
             Começar Agora
         </a>
     </section>
