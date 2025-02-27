@@ -9,7 +9,8 @@ Route::get('/', function () {
         return redirect()->route('dashboard');
     }
 
-    return redirect()->route('login');
+    // return redirect()->route('login');
+    return view('welcome');
 });
 
 Route::get('/github/login', RedirectController::class)->name('github.login');

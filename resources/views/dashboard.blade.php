@@ -1,11 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
         <x-header>
-            {{ __('Vote for a question') }}
+            {{ __('Minha base de dados') }}
         </x-header>
     </x-slot>
 
-    <x-container>
+    <x-container class="dark:bg-gradient-to-t dark:from-gray-800 dark:to-gray-900">
         
         <div class="dark:text-gray-400">
         <form method="GET" action="{{ route('dashboard') }}" class="flex items-center space-x-2">
