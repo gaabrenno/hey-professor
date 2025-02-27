@@ -55,7 +55,7 @@
                 </a>
             </x-login-with>
             <x-login-with>
-                <a href="" class="flex items-center gap-2 text-sm text-black dark: rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-red-800">
+                <a href="{{ route('google.login') }}" class="flex items-center gap-2 text-sm text-black dark: rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-red-800">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5 h-5" viewBox="0 0 48 48">
                         <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303C34.003,32.728,29.789,36,24,36c-7.732,0-14-6.268-14-14 s6.268-14,14-14c3.5,0,6.718,1.26,9.206,3.318l5.636-5.636C34.788,6.423,29.707,4,24,4C12.954,4,4,12.954,4,24s8.954,20,20,20 s20-8.954,20-20C44,22.28,43.902,21.175,43.611,20.083z"/>
                         <path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.225,16.339,18.77,14,24,14c3.5,0,6.718,1.26,9.206,3.318l5.636-5.636 C34.788,6.423,29.707,4,24,4C16.243,4,9.005,8.24,6.306,14.691z"/>
