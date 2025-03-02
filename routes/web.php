@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\Github\{CallbackController, RedirectController};
 use App\Http\Controllers\Auth\Google\{CallbackController as GoogleCallbackController, RedirectController as GoogleRedirectController};
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\{DashboardController, ProfileController, Question, QuestionController};
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +14,11 @@ Route::get('/', function () {
     // return redirect()->route('login');
     return view('welcome');
 });
+
+Route::get('/register', function () {
+    return view('auth.register');
+})->name('register.index');
+Route::get('/register', [RegisteredUserController::class, 'store'])->name('register');
 
 Route::get('/github/login', RedirectController::class)->name('github.login');
 Route::get('/github/callback', CallbackController::class)->name('github.callback');
