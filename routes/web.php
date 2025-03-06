@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Auth\Github\{CallbackController, RedirectController};
+use App\Http\Controllers\Auth\Google\{CallbackController as GoogleCallbackController, RedirectController as GoogleRedirectController};
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\{DashboardController, ProfileController, Question, QuestionController};
 use Illuminate\Support\Facades\Route;
 
@@ -13,10 +15,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/register', function () {
+    return view('auth.register');
+})->name('register.index');
+Route::post('/register', [RegisteredUserController::class, 'store'])->name('register');
+
 Route::get('/github/login', RedirectController::class)->name('github.login');
 Route::get('/github/callback', CallbackController::class)->name('github.callback');
+Route::get('/google/login', GoogleRedirectController::class)->name('google.login');
+Route::get('/google/callback', GoogleCallbackController::class)->name('google.callback');
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth'])->group(function () {
 
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
     #region Question Routes
