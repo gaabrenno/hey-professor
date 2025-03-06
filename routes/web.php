@@ -18,14 +18,14 @@ Route::get('/', function () {
 Route::get('/register', function () {
     return view('auth.register');
 })->name('register.index');
-Route::get('/register', [RegisteredUserController::class, 'store'])->name('register');
+Route::post('/register', [RegisteredUserController::class, 'store'])->name('register');
 
 Route::get('/github/login', RedirectController::class)->name('github.login');
 Route::get('/github/callback', CallbackController::class)->name('github.callback');
 Route::get('/google/login', GoogleRedirectController::class)->name('google.login');
 Route::get('/google/callback', GoogleCallbackController::class)->name('google.callback');
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth'])->group(function () {
 
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
     #region Question Routes
