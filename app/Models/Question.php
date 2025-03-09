@@ -14,6 +14,7 @@ class Question extends Model
     use Prunable;
 
     protected $fillable = [
+        'title',
         'question',
         'draft',
         'created_by',
