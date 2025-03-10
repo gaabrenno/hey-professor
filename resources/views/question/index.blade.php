@@ -7,7 +7,11 @@
 
     <x-container>
         <x-form post :action="route('question.store')">
-            <x-textArea label="Your question" name="question" />
+        <label for="question" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Titulo:
+        </label>
+            <x-text-input label="Title" name="title" />
+            <x-textArea label="Sua base" name="question" />
             <x-btn.principal type="submit"> Save </x-btn.principal>
             <x-btn.reset type="reset"> Reset </x-btn.reset>
         </x-form>      
