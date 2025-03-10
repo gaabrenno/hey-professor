@@ -28,6 +28,10 @@ Route::get('/google/callback', GoogleCallbackController::class)->name('google.ca
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
+
+    Route::get('/chat', function () {
+        return view('chat.index');
+    })->name('chat');
     #region Question Routes
     Route::prefix('/question')->group(function () {
         Route::get('/', [QuestionController::class, 'index'])->name('question.index');

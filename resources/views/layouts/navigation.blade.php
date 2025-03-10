@@ -13,11 +13,11 @@
                     </x-nav-link>
 
                     <x-nav-link :href="route('question.index')" :active="request()->routeIs('question.index')">
-                        {{ __('My Questions') }}
+                        {{ __('My Data Base') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('question.index')" :active="request()->routeIs('question.index')">
-                        {{ __('Configurações') }}
+                    <x-nav-link :href="route('chat')" :active="request()->routeIs('chat')">
+                        {{ __('My Chat') }}
                     </x-nav-link>
                 </div>
             </div>
