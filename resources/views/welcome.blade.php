@@ -68,7 +68,7 @@
         </a>
     </section>
 
-    <footer class="py-6 text-center text-gray-500 text-sm">
+    <footer class="mt-20 py-6 text-center text-gray-500 text-sm position:absolute border:0 width:100%">
         <p>© {{ date('Y') }} ARDA Inovations. Todos os direitos reservados.</p>
     </footer>
 

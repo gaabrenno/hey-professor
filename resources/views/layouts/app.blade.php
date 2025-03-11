@@ -29,9 +29,7 @@
             <main>
                 {{ $slot }}
             </main>
-            <footer class="mt-20 py-6 text-center text-gray-500 text-sm">
-                <p>© {{ date('Y') }} ARDA Inovations. Todos os direitos reservados.</p>
-            </footer>
+
         </div>
         <script>
             // On page load or when changing themes, best to add inline in `head` to avoid FOUC
@@ -41,5 +39,9 @@
                 document.documentElement.classList.remove('dark')
             }
         </script>
+        <footer class="mt-20 py-6 text-center text-gray-500 text-sm position:absolute border:0 width:100%
+">
+            <p>© {{ date('Y') }} ARDA Inovations. Todos os direitos reservados.</p>
+        </footer>
     </body>
 </html>
