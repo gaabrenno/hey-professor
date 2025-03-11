@@ -4,8 +4,12 @@
         <h2 class="text-lg font-semibold text-left">{{ $title }}</h2>
 
         <button @click="open = !open" class="text-gray-400 text-left w-full">
-            <span x-text="open ? '{{ $description }}' : '{{ Str::limit($description, 50) }}...'"></span>
+            <span x-show="!open">{{ Str::limit($description, 150) }}...</span>
+            <span x-show="open" class="hover:underline hover:text-blue-500">Minimizar</span>
         </button>
+        <div x-show="open" class="mt-2 text-justify" x-cloak>
+            {!! nl2br(e($description)) !!}
+        </div>
     </div>
 </div>
 
