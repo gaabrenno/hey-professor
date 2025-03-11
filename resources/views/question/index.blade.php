@@ -26,7 +26,7 @@
         @if($questions->where('draft', true)->isNotEmpty())
         <div class="dark:text-gray-500 uppercase font-bold mb-1">My Draft</div>
         @foreach ($questions->where('draft', true) as $question)
-            <x-acordion title="{{ $question->title }}" description="{{ $question->question }}"/>
+            <x-acordion title="{{ $question->title }}" description="{{ $question->question }}" />
         @endforeach
         <x-table>
             <x-table.thead>
@@ -66,7 +66,7 @@
         @if ($questions->where('draft', false)->isNotEmpty())
         <div class="dark:text-gray-500 uppercase font-bold mb-1">My Questions</div>
         @foreach ($questions->where('draft', false) as $question)
-            <x-acordion title="{{ $question->title }}" description="{{ $question->question }}"/>
+            <x-acordion title="{{ $question->title }}" description="{{ $question->question }}" />
         @endforeach
         <x-table>
             <x-table.thead>
@@ -103,7 +103,7 @@
         @if ($archivedQuestions->isNotEmpty())
         <div class="dark:text-gray-500 uppercase font-bold mb-1">Archive Questions</div>
         @foreach ($archivedQuestions as $question)
-            <x-acordion title="{{ $question->title }}" description="{{ $question->question }}"/>
+            <x-acordion title="{{ $question->title }}" description="{{ $question->question }}" />
         @endforeach
         <x-table>
             <x-table.thead>
