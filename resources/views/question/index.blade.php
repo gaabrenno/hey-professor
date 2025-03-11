@@ -7,14 +7,14 @@
 
     <x-container>
         <x-form post :action="route('question.store')">
-        <label for="question" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            <label for="question" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Titulo:
-        </label>
-            <x-text-input label="Title" name="title" />
-            <x-textArea label="Sua base" name="question" />
+            </label>
+            <x-text-input label="Title" name="title" class="mb-2" placeholder="Seu titulo aqui..."/>
+            <x-textArea label="Sua base:" name="question" />
             <x-btn.principal type="submit"> Save </x-btn.principal>
             <x-btn.reset type="reset"> Reset </x-btn.reset>
-        </x-form>      
+        </x-form>
         <hr class="border-gray-700 border-dashed my-4">
         @if($questions->isEmpty() && $archivedQuestions->isEmpty())
         <div class="flex flex-col items-center justify-center h-full mt-10">
@@ -25,6 +25,9 @@
         
         @if($questions->where('draft', true)->isNotEmpty())
         <div class="dark:text-gray-500 uppercase font-bold mb-1">My Draft</div>
+        @foreach ($questions->where('draft', true) as $question)
+            <x-acordion title="{{ $question->title }}" description="{{ $question->question }}"/>
+        @endforeach
         <x-table>
             <x-table.thead>
                 <tr>
@@ -36,7 +39,7 @@
                 @foreach ($questions->where('draft', true) as $question)
                     <x-table.tr>
                         <x-table.td style="max-width: 500px; width: 100%;">
-                            {{ $question->question }}
+                            {{ $question->title }}
                         </x-table.td>
                         <x-table.td>
                             <x-form delete onsubmit="return confirm('Are you sure?')" :action="route('question.destroy', $question)" >
@@ -62,6 +65,9 @@
         
         @if ($questions->where('draft', false)->isNotEmpty())
         <div class="dark:text-gray-500 uppercase font-bold mb-1">My Questions</div>
+        @foreach ($questions->where('draft', false) as $question)
+            <x-acordion title="{{ $question->title }}" description="{{ $question->question }}"/>
+        @endforeach
         <x-table>
             <x-table.thead>
                 <tr>
@@ -73,7 +79,7 @@
                 @foreach ($questions->where('draft', false) as $question)
                     <x-table.tr>
                         <x-table.td style="max-width: 500px; width: 100%;">
-                            {{ $question->question }}
+                            {{ $question->title }}
                         </x-table.td>
                         <x-table.td>
                             <x-form delete onsubmit="return confirm('Are you sure?')" :action="route('question.destroy', $question)" >
@@ -96,6 +102,9 @@
 
         @if ($archivedQuestions->isNotEmpty())
         <div class="dark:text-gray-500 uppercase font-bold mb-1">Archive Questions</div>
+        @foreach ($archivedQuestions as $question)
+            <x-acordion title="{{ $question->title }}" description="{{ $question->question }}"/>
+        @endforeach
         <x-table>
             <x-table.thead>
                 <tr>
@@ -107,7 +116,7 @@
                 @foreach ($archivedQuestions as $question)
                     <x-table.tr>
                         <x-table.td style="max-width: 500px; width: 100%;">
-                            {{ $question->question }}
+                            {{ $question->title }}
                         </x-table.td>
                         <x-table.td>
                             <x-form patch :action="route('question.restore', $question)" >

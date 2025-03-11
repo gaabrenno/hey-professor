@@ -6,7 +6,6 @@
     </x-slot>
     <div class="max-w-2xl mx-auto p-6 dark:bg-gray-800/50 shadow shadow-blue-500/50 p-4 my-4 rounded-xl">    
     <div class="h-96 overflow-y-auto p-4 space-y-4 bg-gray-700 rounded-lg flex flex-col" id="chat-box">
-        <!-- Mensagens do chat serão exibidas aqui -->
     </div>
     
     <div class="mt-4 flex items-center bg-gray-700 p-3 rounded-lg shadow-lg border border-[#45475a]">
