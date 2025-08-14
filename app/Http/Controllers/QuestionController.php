@@ -61,7 +61,7 @@ class QuestionController extends Controller
         $question->question = request()->question;
         $question->save();
 
-        return to_route('question.index');
+        return to_route('question.index')->withFragment('q-' . $question->id);
     }
 
     public function archive(Question $question): RedirectResponse
@@ -70,7 +70,7 @@ class QuestionController extends Controller
 
         $question->delete();
 
-        return back();
+        return to_route('question.index')->withFragment('archived');
     }
 
     public function restore(int $id): RedirectResponse
@@ -81,7 +81,7 @@ class QuestionController extends Controller
 
         $question->restore();
 
-        return back();
+        return to_route('question.index')->withFragment('q-' . $question->id);
     }
 
     public function destroy(Question $question): RedirectResponse
@@ -90,6 +90,6 @@ class QuestionController extends Controller
 
         $question->forceDelete();
 
-        return back();
+        return to_route('question.index')->withFragment('draft');
     }
 }

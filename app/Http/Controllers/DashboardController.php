@@ -19,10 +19,11 @@ class DashboardController extends Controller
                     ->when(request()->has('search'), function ($query) {
                         $query->where('questions.question', 'like', '%' . request()->search . '%');
                     })
+                    ->where('questions.created_by', auth()->user()->id)
                     ->groupBy('questions.id')
                     ->orderByDesc('votes_sum_like')
                     ->orderBy('votes_sum_unlike')
-                    ->paginate(5),
+                    ->paginate(10),
 
             ]
         );

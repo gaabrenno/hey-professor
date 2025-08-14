@@ -12,6 +12,6 @@ class LikeController extends Controller
     {
         user()->like($questionId);
 
-        return back();
+        return to_route('question.index')->withFragment('q-' . $questionId->id);
     }
 }
