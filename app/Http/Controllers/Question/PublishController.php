@@ -15,6 +15,6 @@ class PublishController extends Controller
 
         $question->update(['draft' => false]);
 
-        return back();
+        return to_route('question.index')->withFragment('q-' . $question->id);
     }
 }

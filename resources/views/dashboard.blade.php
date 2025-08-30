@@ -11,7 +11,7 @@
         <form method="GET" action="{{ route('dashboard') }}" class="flex items-center space-x-2">
             @csrf
             <x-text-input type="text" name="search" value="{{ request()->search }}" class="w-full mt-0"/>
-            <x-btn.principal type="submit"> Search </x-btn.principal>
+            <x-btn.principal type="submit"> Pesquisar </x-btn.principal>
         </form>
 
         @if($questions->isEmpty())
