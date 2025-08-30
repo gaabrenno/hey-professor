@@ -98,7 +98,6 @@
             const messageDiv = document.createElement('div');
             messageDiv.className = `flex gap-3 p-4 ${isUser ? 'bg-gray-800' : 'bg-gray-900'}`;
 
-            // Avatar
             const avatar = document.createElement('div');
             avatar.className = 'flex-shrink-0';
             
@@ -118,7 +117,6 @@
                 `;
             }
 
-            // Content
             const content = document.createElement('div');
             content.className = 'flex-1 min-w-0';
             
@@ -151,15 +149,12 @@
             const text = messageInput.value.trim();
             if (!text) return;
 
-            // Add user message
             addMessage(text, true);
             
-            // Clear input
             messageInput.value = '';
             sendButton.disabled = true;
             autoresizeTextarea();
 
-            // Simulate AI response
             setTimeout(() => {
                 const responses = [
                     'Entendi sua pergunta. Vou buscar as informações mais relevantes para você.',
