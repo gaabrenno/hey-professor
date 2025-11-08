@@ -77,17 +77,3 @@ Note: In production, use Supervisor. Read more in SUPERVISOR.md
 
 ## Creation of a New Module ([introduction](https://laravelmodules.com/docs/v10/introduction))
 
-Create a new module: 
-```
-php artisan module:make module-name
-```
-
-Create a new controller for the module: 
-```
-php artisan module:make-controller module-name ControllerName
-```
-
-[Migrations](https://laravelmodules.com/docs/v9/artisan-commands#module-migrate):
-```
-php artisan module:make-migration create_name_table module-name
-```
